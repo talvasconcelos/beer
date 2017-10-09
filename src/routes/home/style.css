@@ -1,5 +1,19 @@
 .home {
-	padding: 56px 20px;
-	min-height: 100%;
+	display: block;
+  background: #FFF;
+  /*overflow: hidden;*/
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+}
+
+.beer {
 	width: 100%;
+  height: 100%;
+  background: pink;
+  position: absolute;
+  left: 0;
+  top: 0;
 }

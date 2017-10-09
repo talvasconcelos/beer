@@ -5,8 +5,15 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div class={style.home}>
-				<h1>Home</h1>
-				<p>This is the Home component.</p>
+				{this.props.beers && this.props.beers.map(beer => {
+					return (
+						<div key={beer.id} class={style.beer}>
+							<h2>{beer.name} <span>{beer.id}</span> </h2>
+							<p>{beer.tagline}</p>
+							<p>{beer.description}</p>
+						</div>
+					)
+				})}
 			</div>
 		);
 	}
