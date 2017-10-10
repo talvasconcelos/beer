@@ -33,6 +33,10 @@ export default class App extends Component {
 		this.setState({beerIndex: this.state.beerIndex + 1})
 	}
 
+	test2 = (e) => {
+		e.deltaY < 0 ? this.state.beerIndex == 0 ? null : this.setState({beerIndex: this.state.beerIndex - 1}) : this.state.beerIndex == this.state.beers.length - 1 ? null : this.setState({beerIndex: this.state.beerIndex + 1})
+	}
+
 	componentDidMount() {
 		fetchBeers('beers?page=1')
 			.then(r => this.setState({ beers: r }))
@@ -41,13 +45,16 @@ export default class App extends Component {
 	render({}, {beers, beerIndex, ...state}) {
 		return (
 			<div id="app">
-				{(!state.showDetails && beers.length) &&
-					<div>
-						<h2>{beers[beerIndex].name} <span>{beers[beerIndex].id}</span> </h2>
-						<p>{beers[beerIndex].tagline}</p>
-						<p>{beers[beerIndex].description}</p>
-						<button onClick={this.test}>Click</button>
-					</div>}
+				<div class='wrapper' onWheel={this.test2}>
+					{(!state.showDetails && beers.length) &&
+						<div>
+							<h1>#{beers[beerIndex].id}</h1>
+							<h2>{beers[beerIndex].name}</h2>
+							<p>{beers[beerIndex].tagline}</p>
+							<p>{beers[beerIndex].description}</p>
+							<button onClick={this.test}>Click Me</button>
+						</div>}
+				</div>
 				{/* <Router onChange={this.handleRoute}>
 					<Home path="/" beers={this.state.beers} />
 				</Router> */}
